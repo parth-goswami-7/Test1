@@ -1,0 +1,45 @@
+UserList File
+
+@model IEnumerable<CRUD_Operation_ASPNetCore.Models.StudentRegistration>
+
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>UserList</h1>
+
+<p>
+    <a asp-action="StudentRegistration">Create New</a>
+</p>
+@using (Html.BeginForm("UserList", "Users"))
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stud_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stud_Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stud_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stud_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Student_Edit", new { id=item.Stud_ID }) |
+                @Html.ActionLink("Delete", "Student_Delete", new { id = item.Stud_ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}
